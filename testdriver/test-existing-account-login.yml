@@ -1,0 +1,38 @@
+version: 4.1.30
+steps:
+  - prompt: Focus the browser window.
+    commands: []
+  - prompt: Click on the "I ALREADY HAVE AN ACCOUNT" button.
+    commands:
+      - command: hover-text
+        text: I ALREADY HAVE AN ACCOUNT
+        description: button to log in with an existing account
+        action: click
+  - prompt: Assert that the login page is displayed.
+    commands:
+      - command: assert
+        expect: the login page is displayed with email and password fields
+  - prompt: Enter test credentials and submit.
+    commands:
+      - command: hover-text
+        text: Email or username
+        description: email input field
+        action: click
+      - command: type
+        text: testuser@example.com
+      - command: hover-text
+        text: Password
+        description: password input field
+        action: click
+      - command: type
+        text: password123
+      - command: hover-text
+        text: LOG IN
+        description: login button
+        action: click
+  - prompt: >-
+      Assert that the user is logged in successfully or receives an appropriate
+      error message.  # Use the content of the file from the environment
+    commands:
+      - command: assert
+        expect: Wrong password. Please try again.
