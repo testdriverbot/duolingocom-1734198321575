@@ -1,0 +1,26 @@
+version: 4.1.30
+steps:
+  - prompt: Focus the browser window.
+    commands:
+      - command: hover-text
+        text: Duolingo
+        description: Duolingo logo at the top of the page
+        action: click
+  - prompt: Locate the "GET STARTED" button.
+    commands:
+      - command: hover-text
+        text: GET STARTED
+        description: green button to begin the Duolingo sign-up process
+        action: hover
+  - prompt: Click on the "GET STARTED" button.
+    commands:
+      - command: hover-text
+        text: GET STARTED
+        description: green button to begin the Duolingo sign-up process
+        action: click
+  - prompt: >-
+      Assert that the user is taken to the sign-up or introduction page.  # Use
+      the content of the file from the environment
+    commands:
+      - command: assert
+        expect: the page displays "I want to learn..."
